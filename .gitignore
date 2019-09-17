@@ -1,0 +1,11 @@
+*.pyc
+*.sqlite
+*.egg-info/
+*.csv
+*.css
+*.socket
+*.pid
+*.log
+
+.~*#
+tmp.*
