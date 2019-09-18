@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" class="d3">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Marmoset brain connectome analysis project">
+        <meta name="author" content="Shi Bai">
+
+        <title>Marmoset Brain Connectivity Atlas</title>
+
+        <!-- Bootstrap core CSS -->
+
+        <!-- Custom styles for this scaffold -->
+        <link href="/static_nocache/css/styles.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="//oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+        <style>
+            .background {
+              fill: #eee;
+            }
+
+            line {
+              stroke: #fff;
+            }
+
+            text.active {
+              fill: red;
+            }
+        </style>
+        <script type="text/javascript">
+            window.app = {};
+            window.app.page = 'matrix';
+        </script>
+        <!-- Piwik -->
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="//piwik.mrosa.org/";
+            _paq.push(['setTrackerUrl', u+'piwik.php']);
+            _paq.push(['setSiteId', '2']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <!-- End Piwik Code -->        
+    </head>
+
+    <body>
+        <header>
+<div class="container">
+    <div class="row header-inner">
+        <div class="header-bg"></div>
+        <div class="row">
+            <div class="header-logo left-logo full-width">
+                <nav id="main-navigation" class="main-menu main-navigation">
+                    <a href="http://www.marmosetbrain.org/" title="Brain Architecture Project">
+                        <img class="mk-desktop-logo" alt="Brain Architecture Project" src="/static/images/marmoset_header.png">
+                    </a>
+                    <ul>
+                        <li class="menu-item"><a href="http://www.marmosetbrain.org">Home</a></li>
+                        <li class="menu-item"><a href="http://www.marmosetbrain.org/injection">Injections</a></li>
+                        </li>
+                        <li class="menu-item current-menu-item"><a href="http://www.marmosetbrain.org/other_data" class="multiline">Connectivity<br/>Matrix</a></li>
+                        <li class="menu-item"><a href="http://www.marmosetbrain.org/reference" class="multiline">Reference<br/>Materials</a></li>
+                        <li class="menu-item"><a href="http://www.marmosetbrain.org/whitepaper" class="multiline">Project<br/>Document</a></li>
+                    </ul>
+                    <div class="side-icons">
+
+                        <a href="http://mouse.brainarchitecture.org"><img src="/static/images/mouse-nav-icon.png"></a>
+
+                        <a href="http://www.brainarchitecture.org/human-brain"><img src="/static/images/brain-nav-icon.png"></a>
+
+                        <a href="http://marmoset.brainarchitecture.org/"><img src="/static/images/marmoset-nav-icon.png"></a>
+
+                        <a href="http://www.brainarchitecture.org/text-mining"><img src="/static/images/search-nav-icon.png"></a>
+
+                    </div>
+
+                </nav>
+            </div><!-- /.header-logo .left-logo -->
+            <div class="cookie-prompt">
+                <p>We use cookies to offer an improved experience and to keep your viewing preferences. By using our Marmoset Brain website you are giving your consent to <a href="http://www.marmosetbrain.org/cookie-policy">our cookie policy.</a></p>
+                <p><button id="accept_cookie_policy">Got it!</button></p>
+            </div><!-- /.cookie-prompt -->
+        </header>
+        <div id="reactjs">
+            <section class="main">
+                <section class="graph-container">
+                    <div class="loading matrix-view">
+                    </div>
+                    <div class="loading-image"><img src="/static/images/loading.svg" width="120" height="120"/></div>
+                </section>
+                <section class="info-panel">
+                </section>
+            </section>
+        </div>
+        <div id="react_footer"></div>
+        <div class="tooltip matrix-view" style="opacity: 0;"></div>
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="/static/scripts/jquery-2.2.4.min.js"></script>
+        <script src="/static/scripts/commons.min.js"></script>
+        <script src="/static_nocache/scripts/bundle.min.js"></script>
+        <script type="text/javascript">
+            var cookie_closed = localStorage.getItem('cookie_policy_closed');
+            if (cookie_closed != '1') {
+                setTimeout(function() {
+                    $('.cookie-prompt').slideDown();
+                }, 1500);
+                $('#accept_cookie_policy').click(function() {
+                    localStorage.setItem('cookie_policy_closed', 1);
+                    $('.cookie-prompt').hide();
+                });
+            }
+        </script>
+        
+    </body>
+</html>
+
