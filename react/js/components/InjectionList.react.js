@@ -28,7 +28,7 @@ class Injection extends Component {
             'areaBarMouseOver', 'areaBarMouseOut',
             'areaLabelMouseOver', 'areaLabelMouseOut',
             'handleDownloadCSV', 'handleDownloadSVG',
-            'handleDownloadCells',
+            'handleDownloadCells', 'handleDownloadNifti',
             'handleChange', 'show3DView', 'showCaseMeta',
             'handleModalHide'
         );
@@ -326,6 +326,13 @@ class Injection extends Component {
         e.target.download = 'individual_cells_injection_' + injection_name + '.csv';
         Actions.setDownloadLink(href, e);
     }
+    handleDownloadNifti(e) {
+        let injection_name = this.props.injection.display_name ? this.props.injection.display_name + '-' + this.props.tracer_id : this.props.name;
+        let href = '/static/data/individual_injections/nifti_map_' + this.props.name + '.zip';
+        e.target.href = href;
+        e.target.download = 'nifti_map_' + injection_name + '.zip';
+        Actions.setDownloadLink(href, e);
+    }
     handleModalHide(e) {
         Actions.modalHide('injection');
     }
@@ -483,9 +490,11 @@ class Injection extends Component {
                                     Download bar chart as SVG drawing
                                 </a>
                             </li>
-                            <li className="download-csv"><a onClick={this.handleDownloadCSV} title={'click to download FLNe values of injection ' + injection_name + ' in csv format'}>Download data as CSV file</a>
+                            <li className="download-csv"><a onClick={this.handleDownloadCSV} title={'click to download FLNe values of injection ' + injection_name + ' in csv format'}>Download results as CSV file</a>
                             </li>
                             <li className="download-csv"><a onClick={this.handleDownloadCells} title="click to download individual cell data in csv format">Download individual cells</a>
+                            </li>
+                            <li className="download-csv"><a onClick={this.handleDownloadNifti} title="click to download nifti 3D image of results">Download results as 3D image</a>
                             </li>
                             {density_map}
                         </ul>

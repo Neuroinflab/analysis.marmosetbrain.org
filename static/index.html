@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Marmoset brain connectome analysis project">
         <meta name="author" content="Shi Bai">
+        <link rel="icon" href="/static/images/favicon.png">
 
         <title>Marmoset Brain Connectivity Atlas</title>
 
@@ -68,10 +69,11 @@
                         <li class="menu-item"><a href="http://www.marmosetbrain.org">Home</a></li>
                         <li class="menu-item"><a href="http://www.marmosetbrain.org/injection">Injections</a></li>
                         </li>
-                        <li class="menu-item current-menu-item"><a href="http://www.marmosetbrain.org/other_data" class="multiline">Connectivity<br/>Matrix</a></li>
+                        <li class="menu-item current-menu-item"><span class="multiline">Connectivity<br/>Matrix</span></li>
                         <li class="menu-item"><a href="http://www.marmosetbrain.org/reference" class="multiline">Reference<br/>Materials</a></li>
                         <li class="menu-item"><a href="http://www.marmosetbrain.org/whitepaper" class="multiline">Project<br/>Document</a></li>
                     </ul>
+                    <!--
                     <div class="side-icons">
 
                         <a href="http://mouse.brainarchitecture.org"><img src="/static/images/mouse-nav-icon.png"></a>
@@ -83,6 +85,7 @@
                         <a href="http://www.brainarchitecture.org/text-mining"><img src="/static/images/search-nav-icon.png"></a>
 
                     </div>
+                    -->
 
                 </nav>
             </div><!-- /.header-logo .left-logo -->
@@ -104,6 +107,12 @@
         </div>
         <div id="react_footer"></div>
         <div class="tooltip matrix-view" style="opacity: 0;"></div>
+		<div class="project-prompt-bg"></div>
+		<div class="project-prompt">
+			<p class="normal">The resource you are about to access is part of the <a href="http://www.marmosetbrain.org" target="_blank">Marmoset Brain Connectivity Atlas</a>. All the data and functionality here are presented in the spirit of open science, and are distributed under a CC-BY-SA 4.0 license. In case you intend to use these materials for scientific purposes, please take some time to familiarise with our <a href="http://www.marmosetbrain.org/about" target="_blank">citation policy.</a></p>
+			<p><button id="accept_project_prompt">Got it!</button></p>
+		</div><!-- /.project-prompt -->
+        
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="/static/scripts/jquery-2.2.4.min.js"></script>
         <script src="/static/scripts/commons.min.js"></script>
@@ -119,6 +128,22 @@
                     $('.cookie-prompt').hide();
                 });
             }
+
+            var referred = false;
+            if (/(brainarchitecture|braincircuits)/i.test(document.referrer)) {
+                referred = true;
+            }
+            if (referred) {
+                setTimeout(function() {
+					$('.project-prompt').show();
+					$('.project-prompt-bg').show();
+                }, 500);
+                $('#accept_project_prompt').click(function() {
+                    $('.project-prompt').hide();        
+                    $('.project-prompt-bg').hide();
+                });
+            }
+
         </script>
         
     </body>
