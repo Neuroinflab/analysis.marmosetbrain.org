@@ -13,11 +13,12 @@ import {toTitleCase, getColorFunc, scientificNotion, getTargetAreaSummaryHTML} f
 import {Connectivity} from '../lib/connectivity';
 
 const LICENSE_RENEW = 3600;
-const CONNECTIVITY_MATRIX = '/static/data/marmoset_brain_architecture_1_0_fln_matrix.txt';
-const CONNECTIVITY_MATRIX_GPICKLE = '/static/data/marmoset_brain_architecture_1_0_connectivity_matrix.gpickle';
-const ALL_INJECTIONS = '/static/data/marmoset_brain_architecture_1_0_all_injections.txt';
-const SQL_DATABASE = '/static/data/marmoset_brain_architecture_1_0_master_database.db';
-const INTERAREAL_DISTACE = '/static/data/marmoset_brain_architecture_1_0_interareal_distance_matrix.txt';
+const CONNECTIVITY_MATRIX = '/static/data/marmoset_brain_connectivity_1_0_fln_matrix.txt';
+const CONNECTIVITY_MATRIX_GPICKLE = '/static/data/marmoset_brain_connectivity_1_0_connectivity_matrix.gpickle';
+const ALL_INJECTIONS = '/static/data/marmoset_brain_connectivity_1_0_all_injections.txt';
+const ALL_NIFTI = '/static/data/marmoset_brain_connectivity_1_0_all_injections_in_nifti_format.zip';
+const SQL_DATABASE = '/static/data/marmoset_brain_connectivity_1_0_master_database.db';
+const INTERAREAL_DISTACE = '/static/data/marmoset_brain_connectivity_1_0_interareal_distance_matrix.txt';
 
 export default class QuickLinks extends React.Component {
     constructor(props, context) {
@@ -30,12 +31,14 @@ export default class QuickLinks extends React.Component {
                   'handleAgreementAccept', 'handleAgreementCancel',
                   'handleQLConnectivityTxt', 'handleQLConnectivityPickle',
                   'handleQLAllInjections', 'handleQLSQLite',
+                  'handleQLAllNifti',
                   'handleInterAreal',
                   'handleQLScreenCast', 'handleQLVideoDoc',
                   'openLink', 'removeLicense',
                   'handleLicenseCheck',
                   'handleShowTooltip', 'handleHideTooltip'
                  );
+        window.removeLicense = this.removeLicense;
     }
     componentDidMount() {
         AppStore.addListener('download', this.handleLicenseCheck);
@@ -61,6 +64,10 @@ export default class QuickLinks extends React.Component {
         e.preventDefault();
         return;
         let href = SQL_DATABASE;
+        Actions.setDownloadLink(href, e, href.split('/').pop());
+    }
+    handleQLAllNifti(e) {
+        let href = ALL_NIFTI;
         Actions.setDownloadLink(href, e, href.split('/').pop());
     }
     handleInterAreal(e) {
@@ -104,6 +111,7 @@ export default class QuickLinks extends React.Component {
     }
     openLink(e) {
         let href = AppStore.getDownloadHref();
+        console.log('downloading href', href);
         if (href) {
             if (href.startsWith('data:')) {
                 let filename = AppStore.getDownloadFilename();
@@ -119,12 +127,14 @@ export default class QuickLinks extends React.Component {
                     //window.open(href, '_blank');
                     let filename = AppStore.getDownloadFilename();
                     let a = $('<a></a>').attr('href', href).css({display: 'none'}).text('Download');
+                    console.log('hyperlink created', a);
                     if (filename) {
                         //a.attr('download', filename);
                         //a.prop('download', filename);
                     }
                     a.get(0).setAttribute('download', filename);
                     a.get(0).click();
+                    a.get(0).dispatchEvent(new MouseEvent('click', {bubbles: true, cancelable: true, view: window}));
                     a.remove();
                 }
             }
@@ -137,6 +147,7 @@ export default class QuickLinks extends React.Component {
         let local = window.localStorage;
         let accept = local.removeItem('CCLicense');
     }
+
     handleShowTooltip(e) {
         let bbox = $('.quick-links')[0].getBoundingClientRect();
         let target_bbox = e.target.getBoundingClientRect();
@@ -194,6 +205,9 @@ export default class QuickLinks extends React.Component {
                         <a href={ALL_INJECTIONS} download onClick={this.handleQLAllInjections}><span className="link">Collated results of all injections (txt file)</span></a> {cc}
                     </li>
                     <li>
+                        <a href={ALL_NIFTI} download onClick={this.handleQLAllNifti}><span className="link">Results in 3D volume format (NIfTI)</span></a> {cc}
+                    </li>
+                    <li>
                         <a href={INTERAREAL_DISTACE} download onClick={this.handleInterAreal}><span className="link">Interareal distance matrix (txt file)</span></a> {cc}
                     </li>
                     <li className="with-gap">
@@ -207,8 +221,13 @@ export default class QuickLinks extends React.Component {
                             <p>I have read and understood <a href="http://www.marmosetbrain.org/about" target="_blank">the citation policy</a>, the <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0 licence</a> and I understand under which condition I can use the data and how to acknowledge the datased I am about to download.</p>
                             <div className="license-modal-how-to-cite">
                                 <div className="subtitle">How to cite?</div>
-                                <div className="content">
+                                <div className="content-hide">
                                     Majka, P., Chaplin, T. A., Yu, H.-H., Tolpygo, A., Mitra, P. P., Wójcik, D. K., &amp; Rosa, M. G. P. (2016). <i>Towards a comprehensive atlas of cortical connections in a primate brain: Mapping tracer injection studies of the common marmoset into a reference digital template.</i> Journal of Comparative Neurology, 524(11), 2161–2181. <a href="http://doi.org/10.1002/cne.24023">http://doi.org/10.1002/cne.24023</a>
+                                </div>
+                                <div className="content">
+                                    Majka P., Bai S., Bakola S., Bednarek S., Chan J.C., Jermakow N.,
+                                    Passarelli L., Reser D.H., Theodoni P., Worthy K.H., Wang X-J., Wójcik
+                                    D.K., Mitra P.P. &amp; Rosa M.G.P. (2020). <i>Open access resource for cellular-resolution analyses of corticocortical connectivity in the marmoset monkey.</i> Nature Communications. <a href="http://doi.org/10.1038/s41467-020-14858-0" target="_blank">http://doi.org/10.1038/s41467-020-14858-0</a>
                                 </div>
                             </div>
 
