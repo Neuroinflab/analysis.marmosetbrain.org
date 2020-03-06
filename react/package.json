@@ -22,7 +22,7 @@
     "grunt-contrib-concat": "^1.0.1",
     "jquery": "^3.4.0",
     "keymirror": "^0.1.0",
-    "lodash": "^4.17.0",
+    "lodash": "^4.17.13",
     "moment": "^2.18.1",
     "nan": "^2.12.1",
     "node-gyp": "^3.8.0",
