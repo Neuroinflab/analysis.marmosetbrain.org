@@ -22,7 +22,6 @@ export default class MainSection extends React.Component {
             let maxZ = 1000;
             let colorFunction = d3.scaleLinear().domain([0.0 * maxZ, 0.005 * maxZ, 0.13 * maxZ, 0.28 * maxZ, 0.32 * maxZ, 0.74 * maxZ, 0.92 * maxZ, maxZ])
                 .range(['rgb(230, 230, 230)', 'rgb(244, 247, 140)', 'rgb(226, 139, 33)', 'rgb(215, 82, 35)', 'rgb(212, 67, 36)', 'rgb(124, 83, 89)', 'rgb(81, 51, 49)', 'rgb(81, 51, 49)']);
-
         let x = d3.scaleBand().range([0, width]),
             z = d3.scaleLog().domain([1, 676]).clamp(true),
             c = d3.scaleOrdinal(d3.schemeCategory10).domain(d3.range(10));
@@ -159,7 +158,6 @@ export default class MainSection extends React.Component {
                 }, 5000);
                 */
             });
-
     }
     componentWillUnmount() {
         AppStore.removeChangeListener(this.handleChange);

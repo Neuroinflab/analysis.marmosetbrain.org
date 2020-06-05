@@ -111,7 +111,6 @@ export default class QuickLinks extends React.Component {
     }
     openLink(e) {
         let href = AppStore.getDownloadHref();
-        console.log('downloading href', href);
         if (href) {
             if (href.startsWith('data:')) {
                 let filename = AppStore.getDownloadFilename();
@@ -127,7 +126,6 @@ export default class QuickLinks extends React.Component {
                     //window.open(href, '_blank');
                     let filename = AppStore.getDownloadFilename();
                     let a = $('<a></a>').attr('href', href).css({display: 'none'}).text('Download');
-                    console.log('hyperlink created', a);
                     if (filename) {
                         //a.attr('download', filename);
                         //a.prop('download', filename);
@@ -147,7 +145,6 @@ export default class QuickLinks extends React.Component {
         let local = window.localStorage;
         let accept = local.removeItem('CCLicense');
     }
-
     handleShowTooltip(e) {
         let bbox = $('.quick-links')[0].getBoundingClientRect();
         let target_bbox = e.target.getBoundingClientRect();
@@ -176,7 +173,6 @@ export default class QuickLinks extends React.Component {
         let modalStyle = _.clone(defaultModalStyle);
         modalStyle.width = '60%';
         modalStyle.maxWidth = '960px';
-
 
         let cc = (<a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank"><img src="/static/images/sa_80x15.png"/></a>);
         cc = null;

@@ -77,7 +77,6 @@ export default class Slider extends Component {
                 <input type="range" min={this.props.min} max={this.props.max}
                     orient={this.props.orient}
                     onChange={this.handleChange} value={value}
-
                     ref={(input) => this.slider = input} />
                 {this.props.children}
             </div>

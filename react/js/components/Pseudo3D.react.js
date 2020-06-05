@@ -304,7 +304,6 @@ export default class Pseudo3D extends Component {
             + this.props.injection.section_x + '/'
             + this.props.injection.section_y
             + '/3';
-
         let sub_title = (<div className="sub-title">
             <a className={classNames('jump', this.props.tracer_id)} href={jump_href} target="_blank" title="Click to jump to injection in high resolution viewer"><span className={classNames('icon-jump', this.props.tracer_id)}/></a>
             <span className="coordinates" onMouseEnter={this.handleShowTip} onMouseLeave={this.handleHideTip}>

@@ -188,7 +188,6 @@ export default class MetadataModal extends Component {
             + this.props.injection.section_x + '/'
             + this.props.injection.section_y
             + '/3';
-
         //<a className={classNames('jump', this.props.meta.tracer)} href={jump_href} target="_blank"><span className={classNames('icon-jump', this.props.meta.tracer)}/></a>
         let sub_title = (<div className="sub-title">
             <span className="coordinates" onMouseEnter={this.handleShowCoordTip} onMouseLeave={this.handleHideCoordTip}>

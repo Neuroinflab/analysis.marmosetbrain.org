@@ -240,7 +240,6 @@ export default class MainSection2 extends React.Component {
                     that.clicked = true;
                     //d3.selectAll('.injection-area-name')
                     //    .text(toTitleCase(n.area.fullname) + ' (' + n.nodeName + ')');
-
                     Actions.pickNode(that._areas.byAbbrev[n.nodeName]);
 
                     /*
