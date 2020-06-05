@@ -355,7 +355,7 @@ export default class Pseudo3D extends Component {
                         <div className="wrapper">
                             <input type="checkbox" value="1" checked={this.state.p3d.borderAlpha == '100'} onChange={this.handleEnhanceBorder} /><span className="enhance-border">Enhance borders</span><br/>
                             <i className="download-csv" />
-                            <a href={'http://flatmap.marmosetbrainorg/flatmap/' + this.props.case_id + '/' + this.props.tracer_id + '.png'} target="_blank" title={'Download the flatmap image for injection ' + this.props.injection_name}>Download the image</a>
+                            <a href={'http://flatmap.marmosetbrain.org/flatmap/' + this.props.case_id + '/' + this.props.tracer_id + '.png'} target="_blank" title={'Download the flatmap image for injection ' + this.props.injection_name}>Download the image</a>
                         </div>
                     </div>
                     <div className="note">
