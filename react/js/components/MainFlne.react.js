@@ -49,7 +49,9 @@ export default class MainFlne extends Component {
     componentWillUnmount() {
         AppStore.removeChangeListener(this.handleChange);
     }
+    /*
     showTooltip(source_id, x = null, y = null) {
+        alert('I am called');
         let source = this.props.areas.byAbbrev[source_id];
         let tooltip = d3.select('div.tooltip');
         tooltip.classed('matrix-view', false);
@@ -67,6 +69,7 @@ export default class MainFlne extends Component {
             .style("left", (x_) + "px")
             .style("top", (y_) + "px");
     }
+    */
     getBarWidthFunc(min, max) {
         if (this.props.mode == 'SLN') {
             min = 0;
@@ -179,7 +182,6 @@ export default class MainFlne extends Component {
 
             function showValue(node, d) {
                 d3.select(node).selectAll('rect').attr('fill', 'brown');
-                console.log('value', d[data_attr]);
                 let textAtBehindThreshold;
                 if (that.props.mode == 'SLN') {
                     textAtBehindThreshold = 0.12;

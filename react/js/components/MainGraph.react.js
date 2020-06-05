@@ -61,6 +61,7 @@ export default class MainGraph extends React.Component {
             });
             Actions.saveInjectionsStatic(inj);
         });
+        /*
         this.ajaxLoad('flne_gmeannz_areas.json', (flne) => {
             this.flne_per_area = flne;
         });
@@ -68,6 +69,7 @@ export default class MainGraph extends React.Component {
             this.flne_per_injection = flne;
             this.setState({flne_per_injection: flne});
         });
+        */
         this.ajaxLoad('structures.json', (struct) => {
             Actions.processAreas(struct);
             _.each(struct, s => {
@@ -687,8 +689,8 @@ export default class MainGraph extends React.Component {
                     <section id="info-panel" className="graph-view">
                         <QuickLinks/>
                         <div className="injection-info">
-                            <MainFlne flne={this.flne_per_area} areas={this._areas} mode='FLN' />
-                            <InjectionList flne={this.state.flne_per_injection} mode='FLN' />
+                            <MainFlne areas={this._areas} mode='FLN' />
+                            <InjectionList mode='FLN' />
                         </div>
                     </section>
                 </section>

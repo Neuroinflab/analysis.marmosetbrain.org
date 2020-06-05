@@ -53,6 +53,7 @@ export default class MainMatrix extends React.Component {
             });
             Actions.saveInjectionsStatic(inj);
         });
+        /*
         this.ajaxLoad('flne_gmeannz_areas.json', (flne) => {
             this.flne_per_area = flne;
         });
@@ -60,6 +61,7 @@ export default class MainMatrix extends React.Component {
             this.flne_per_injection = flne;
             this.setState({flne_per_injection: flne});
         });
+        */
         this.ajaxLoad('marmoset_brain_connectivity_FLN.json', (data) => {
             this._connectivity_data = data;
         });
@@ -781,8 +783,8 @@ export default class MainMatrix extends React.Component {
                         <section id="info-panel" className="matrix-view">
                             <QuickLinks/>
                             <div className="injection-info">
-                                <MainFlne flne={this.flne_per_area} areas={this._areas} mode='FLN' />
-                                <InjectionList flne={this.state.flne_per_injection} mode='FLN'/>
+                                <MainFlne areas={this._areas} mode='FLN' />
+                                <InjectionList mode='FLN'/>
                             </div>
                         </section>
                     </section>

@@ -59,6 +59,7 @@ export default class SLN extends React.Component {
             });
             Actions.saveInjectionsStatic(inj);
         });
+        /*
         this.ajaxLoad('flne_gmeannz_areas.json', (flne) => {
             this.flne_per_area = flne;
         });
@@ -66,6 +67,7 @@ export default class SLN extends React.Component {
             this.flne_per_injection = flne;
             this.setState({flne_per_injection: flne});
         });
+        */
         this.ajaxLoad('structures.json', (struct) => {
             Actions.processAreas(struct);
             _.each(struct, s => {
@@ -731,8 +733,8 @@ export default class SLN extends React.Component {
                         <section id="info-panel" className="matrix-view">
                             <QuickLinks/>
                             <div className="injection-info">
-                                <MainFlne flne={this.flne_per_area} areas={this._areas} mode={this.dataOverlay} />
-                                <InjectionList flne={this.state.flne_per_injection} mode={this.dataOverlay} />
+                                <MainFlne areas={this._areas} mode={this.dataOverlay} />
+                                <InjectionList mode={this.dataOverlay} />
                             </div>
                         </section>
                     </section>

@@ -78,7 +78,10 @@ export class Connectivity {
         if (injectionInfo) {
             let injection_id = d.case_id + '-' + d.tracer_id;
             let ii = injectionInfo[injection_id];
-            if (ii.display_name) {
+            if (!ii) {
+                console.log('injection load failure', injection_id);
+            }
+            if (ii && ii.display_name) {
                 display_name = ii.display_name;
             }
         }
