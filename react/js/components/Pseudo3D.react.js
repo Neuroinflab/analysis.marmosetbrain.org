@@ -349,14 +349,14 @@ export default class Pseudo3D extends Component {
                     <div className={classNames('tooltip', 'flatmap-tip', {hidden: !this.state.showFlatmapTip})}>
                         Flattened mid-thickness cortical surface.<br/>Different colors correspond to various areas. Black dots denote individual cells projected onto the flat map, while the sphere indicates the injection location.
                     </div>
-                    <img className="flatmap" src={'http://d13rgn2ixumcch.cloudfront.net/flatmap/' + this.props.case_id + '/' + this.props.tracer_id + '.png'}/>
-                    <img className="flatmap-border" src="http://d13rgn2ixumcch.cloudfront.net/flatmap/flatmap_border.png"
+                    <img className="flatmap" src={'http://flatmap.marmosetbrain.org/flatmap/' + this.props.case_id + '/' + this.props.tracer_id + '.png'}/>
+                    <img className="flatmap-border" src="http://flatmap.marmosetbrain.org/flatmap/flatmap_border.png"
                         style={{opacity: borderOpacity}} />
                     <div className="opacity-slider">
                         <div className="wrapper">
                             <input type="checkbox" value="1" checked={this.state.p3d.borderAlpha == '100'} onChange={this.handleEnhanceBorder} /><span className="enhance-border">Enhance borders</span><br/>
                             <i className="download-csv" />
-                            <a href={'http://d13rgn2ixumcch.cloudfront.net/flatmap/' + this.props.case_id + '/' + this.props.tracer_id + '.png'} target="_blank" title={'Download the flatmap image for injection ' + this.props.injection_name}>Download the image</a>
+                            <a href={'http://flatmap.marmosetbrainorg/flatmap/' + this.props.case_id + '/' + this.props.tracer_id + '.png'} target="_blank" title={'Download the flatmap image for injection ' + this.props.injection_name}>Download the image</a>
                         </div>
                     </div>
                     <div className="note">
